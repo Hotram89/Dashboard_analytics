@@ -1,0 +1,27 @@
+.pictoList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 117px;
+    height: 100%;
+    gap: 20px
+
+}
+
+.picto {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#FFFFFF ;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.picto:hover {
+    transform: scale(1.2);
+    transition-duration: 200ms;
+}

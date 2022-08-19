@@ -1,0 +1,18 @@
+.dashboard {
+    border: 1px solid red;
+    width: 100%;
+}
+
+.charts {
+    width: 80%;
+    background-color: yellow;
+}
+/* .recharts-responsive-container {
+    background-color: yellow;
+} */
+
+
+
+.recharts-rectangle {
+    width: 7px;
+}
