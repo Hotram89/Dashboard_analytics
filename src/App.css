@@ -21,43 +21,17 @@ body {
 }
 
 .dashboard {
-    padding: 68px;
+    padding: 40px 68px;
 }
 
-.dashboard h1 {
-    font-size: 48px;
-    font-weight: 600;
-    margin-bottom: 41px;
-}
-
-.dashboard span {
-    color: #FF0101 ;
-}
-
-.dashboard h2 {
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 41px;
-
-}
 
 .dataVisualisation {
     display: flex;
     border: 1px solid blue;
     height: 80%;
     width: 100%;
+    gap: 2rem;
 }
 
-.foodList  {
-    background-color: aqua;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
 
-.foodList li {
-    background-color: azure;
-    margin: 39px;
-    border: blue 1px solid
-}
+

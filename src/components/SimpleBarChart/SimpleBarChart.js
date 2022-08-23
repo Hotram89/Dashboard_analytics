@@ -1,5 +1,5 @@
 import React from "react";
-import { data } from "../../data/dataMock";
+import { data } from "data/dataMock";
 import "./SimpleBarChart.css";
 import {
   BarChart,

@@ -1,0 +1,16 @@
+.userInfos h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 41px;
+}
+
+.userInfos span {
+    color: #FF0101 ;
+}
+
+.userInfos h2 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 41px;
+
+}

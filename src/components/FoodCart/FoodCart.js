@@ -5,10 +5,17 @@ const FoodCart = (props) => {
   console.log(props);
   return (
     <li>
-      <div>
-        <img src={process.env.DOSSIER_URL} alt={props.name.img} />
+      <div className={"iconColor " + props.name.name}>
+        <img
+          src={props.name.img}
+          alt={props.name.img}
+          fill={props.name.color}
+        />
       </div>
-      {props.name.name}
+      <div className="textIcon ">
+        <h2>{props.name.quantity}</h2>
+        <h3>{props.name.name}</h3>
+      </div>
     </li>
   );
 };

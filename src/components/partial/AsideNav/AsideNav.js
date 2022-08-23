@@ -1,8 +1,8 @@
 import React from "react";
-import pictoYoga from "../../assets/yoga.svg";
-import pictoSwim from "../../assets/natation.svg";
-import pictoBike from "../../assets/velo.svg";
-import pictoMuscu from "../../assets/muscu.svg";
+import pictoYoga from "assets/yoga.svg";
+import pictoSwim from "assets/natation.svg";
+import pictoBike from "assets/velo.svg";
+import pictoMuscu from "assets/muscu.svg";
 import "./AsideNav.css";
 
 const AsideNav = () => {
