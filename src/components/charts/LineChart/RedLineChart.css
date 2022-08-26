@@ -1,0 +1,12 @@
+.littles {
+    width: 100%;
+    min-height: 200px;
+    border: 1px red dashed;
+}
+
+.littleLine {
+    width: 258px;
+    height: 263px;
+    background-color: rgba(255, 0, 0, 1);
+
+}

@@ -2,10 +2,13 @@
     border: 1px solid red;
     width: 100%;
 }
-
 .charts {
     width: 80%;
-    background-color: yellow;
+}
+.bigOne {
+    width: 100%;
+min-height: 100px;    background-color: yellow;
+    border: red solid 1px;
 }
 /* .recharts-responsive-container {
     background-color: yellow;

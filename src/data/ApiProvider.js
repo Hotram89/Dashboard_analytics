@@ -3,8 +3,8 @@ import Dto from "./Dto";
 
 export default class ApiProvider {
   constructor() {
-    this.data = new Set();
-    USER_MAIN_DATA.map((user) => this.data.add(new Dto(user)));
+    this.data = USER_MAIN_DATA;
+    console.log(this.data);
 
     console.log("coucou");
   }

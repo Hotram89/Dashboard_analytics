@@ -11,6 +11,50 @@ export const data = [
   { name: "Tittor", calories: 410, poids: 500, amt: 450 },
 ];
 
+export const datagraph2 = [
+  {
+    name: "L",
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: "M",
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: "M",
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: "J",
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: "V",
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: "S",
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: "D",
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+];
 export const calories = [{ name: "calories" }];
 
 export const USER_MAIN_DATA = [
@@ -83,6 +127,46 @@ export const USER_ACTIVITY = [
       {
         day: "2020-07-07",
         kilogram: 76,
+        calories: 390,
+      },
+    ],
+  },
+  {
+    userId: 18,
+    sessions: [
+      {
+        day: "2020-07-01",
+        kilogram: 70,
+        calories: 240,
+      },
+      {
+        day: "2020-07-02",
+        kilogram: 69,
+        calories: 220,
+      },
+      {
+        day: "2020-07-03",
+        kilogram: 70,
+        calories: 280,
+      },
+      {
+        day: "2020-07-04",
+        kilogram: 70,
+        calories: 500,
+      },
+      {
+        day: "2020-07-05",
+        kilogram: 69,
+        calories: 160,
+      },
+      {
+        day: "2020-07-06",
+        kilogram: 69,
+        calories: 162,
+      },
+      {
+        day: "2020-07-07",
+        kilogram: 69,
         calories: 390,
       },
     ],
