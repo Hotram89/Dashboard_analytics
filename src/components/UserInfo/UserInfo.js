@@ -1,6 +1,9 @@
 import React from "react";
 import "./UserInfo.css";
 import { USER_MAIN_DATA } from "data/dataMock";
+import Dto from "data/Dto";
+
+const profilDto = new Dto().profilDto();
 
 const UserInfo = () => {
   const urlId = 12;

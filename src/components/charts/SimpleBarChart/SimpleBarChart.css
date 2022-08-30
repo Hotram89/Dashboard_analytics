@@ -4,11 +4,11 @@
 }
 .charts {
     width: 80%;
+    height: 100%;
 }
 .bigOne {
     width: 100%;
-min-height: 100px;    background-color: yellow;
-    border: red solid 1px;
+    height: 400px;    
 }
 /* .recharts-responsive-container {
     background-color: yellow;

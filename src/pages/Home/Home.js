@@ -2,6 +2,8 @@ import FoodCart from "components/FoodCart/FoodCart";
 import UserInfo from "components/UserInfo/UserInfo";
 import FirstBarChart from "components/charts/SimpleBarChart/SimpleBarChart";
 import RedLineChart from "components/charts/LineChart/RedLineChart";
+import SimpleRadarChart from "components/charts/SimpleRadarChart/SimpleRadarChart";
+import ScoreChart from "components/charts/ScoreChart/ScoreChart";
 
 const Home = (id) => {
   console.log(id);
@@ -19,7 +21,13 @@ const Home = (id) => {
               <div className="littleLine">
                 <RedLineChart />
               </div>
-              <div className="littleRadar"></div>
+
+              <div className="littleRadar">
+                <SimpleRadarChart />
+              </div>
+              <div className="lillteRadial">
+                <ScoreChart />
+              </div>
             </section>
           </div>
 
