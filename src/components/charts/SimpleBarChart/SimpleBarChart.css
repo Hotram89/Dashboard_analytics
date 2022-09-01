@@ -19,3 +19,9 @@
 .recharts-rectangle {
     width: 7px;
 }
+
+.textChart {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: -1.6rem;
+}

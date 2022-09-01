@@ -7,8 +7,8 @@
 }
 
 .littleLine {
-    width: 258px;
-    height: 263px;
+    min-width: 300px;
+    min-height: 263px;
     background-color: rgba(255, 0, 0, 1);
 
 }

@@ -4,7 +4,6 @@ import Dto from "./Dto";
 export default class ApiProvider {
   constructor() {
     this.data = USER_MAIN_DATA;
-    console.log("coucou");
   }
 
   getProfilData() {

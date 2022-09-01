@@ -25,11 +25,24 @@ const RedLineChart = () => {
           bottom: 5,
         }}
       >
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis
+          dataKey="name"
+          stroke="#FFFFFF"
+          axisLine={false}
+          tickLine={false}
+          fillOpacity={0.5}
+          tickMargin={10}
+          style={{ transform: "scale(0.9)" }}
+        />
+        <YAxis
+          hide={true}
+          axisLine={false}
+          tick={false}
+          domain={["dataMin - 5", "dataMax + 5"]}
+        />
         <Tooltip />
         <Legend />
-        <Line type="basis" dataKey="pv" stroke="#FFFFFF" activeDot={{ r: 8 }} />
+        <Line type="basis" dataKey="pv" stroke="#FFFFFF" activeDot={false} />
       </LineChart>
     </ResponsiveContainer>
   );

@@ -15,6 +15,7 @@ const Home = (id) => {
         <div className="dataVisualisation">
           <div className="charts">
             <section className="bigOne">
+              <h3 className="textChart">Activité quotidienne</h3>
               <FirstBarChart />
             </section>
             <section className="littles">
@@ -33,7 +34,6 @@ const Home = (id) => {
 
           <FoodCart />
         </div>
-        bienvenue sur ce site de Sport
       </section>
     </main>
   );
