@@ -3,7 +3,7 @@ import { USER_ACTIVITY } from "data/dataMock";
 import { USER_PERFORMANCE } from "data/dataMock";
 
 export default class Dto {
-  constructor() {
+  constructor(data) {
     this.profilData = new ApiProvider().getProfilData();
   }
 
@@ -27,13 +27,22 @@ export default class Dto {
     return newprops;
   }
 
-  radarProps() {
-    let propsInit = USER_PERFORMANCE[0].data;
-    console.log(USER_PERFORMANCE[0]);
+  cardProps(data) {
     let newprops = [];
 
-    propsInit.map((el) => {
-      console.log(el);
+    data.map((el) => {
+      newprops.push({
+        id: el.id,
+        type: el.keyData,
+      });
     });
+    return newprops;
+  }
+
+  radarProps() {
+    let propsInit = USER_PERFORMANCE[0].data;
+    let newprops = [];
+
+    propsInit.map((el) => {});
   }
 }

@@ -4,14 +4,18 @@ import FirstBarChart from "components/charts/SimpleBarChart/SimpleBarChart";
 import RedLineChart from "components/charts/LineChart/RedLineChart";
 import SimpleRadarChart from "components/charts/SimpleRadarChart/SimpleRadarChart";
 import ScoreChart from "components/charts/ScoreChart/ScoreChart";
+import AsideNav from "components/partial/AsideNav/AsideNav";
+import ApiProvider from "data/ApiProvider";
 
-const Home = (id) => {
-  console.log(id);
+const Home = () => {
+  let urlId = window.location.pathname.replace("/", "");
+  let userId = urlId == "" ? 12 : urlId;
 
   return (
     <main className="main">
+      <AsideNav />
       <section className="dashboard">
-        <UserInfo id={id} />
+        <UserInfo id={userId} />
         <div className="dataVisualisation">
           <div className="charts">
             <section className="bigOne">
@@ -32,7 +36,7 @@ const Home = (id) => {
             </section>
           </div>
 
-          <FoodCart />
+          <FoodCart userId={userId} />
         </div>
       </section>
     </main>

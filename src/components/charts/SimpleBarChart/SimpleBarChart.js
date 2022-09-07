@@ -1,7 +1,5 @@
 import React from "react";
-import { data } from "data/dataMock";
 import Dto from "data/Dto";
-import { USER_ACTIVITY } from "data/dataMock";
 import "./SimpleBarChart.css";
 import {
   BarChart,
@@ -15,12 +13,6 @@ import {
 } from "recharts";
 
 const FirstBarChart = () => {
-  const urlId = 12;
-  let idFilter = USER_ACTIVITY.filter((el) => {
-    if (urlId === el.userId) {
-      return true;
-    }
-  });
   const filteredProps = new Dto().scoreProps();
 
   return (
