@@ -6,8 +6,12 @@ import SimpleRadarChart from "components/charts/SimpleRadarChart/SimpleRadarChar
 import ScoreChart from "components/charts/ScoreChart/ScoreChart";
 import AsideNav from "components/partial/AsideNav/AsideNav";
 import ApiProvider from "data/ApiProvider";
+import { useState } from "react";
 
 const Home = () => {
+  const [userSelect, setUserSelect] = useState();
+  console.log(userSelect);
+
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
 
@@ -35,8 +39,12 @@ const Home = () => {
               </div>
             </section>
           </div>
-
-          <FoodCart userId={userId} />
+          <ul className="foodList">
+            <FoodCart value={2} type="Calories" unit="kCal" />
+            <FoodCart value={1} type="Proteines" unit="g" />
+            <FoodCart value={2} type="Glucides" unit="g" />
+            <FoodCart value={0} type="Lipides" unit="g" />
+          </ul>
         </div>
       </section>
     </main>
