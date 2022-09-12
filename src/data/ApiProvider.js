@@ -20,7 +20,11 @@ export default class ApiProvider {
   }
 
   getCardData() {
+    let urlId = window.location.pathname.replace("/", "");
+    let userId = urlId == "" ? 12 : urlId;
+
     const goodData = new Dto().cardProps(this.userData);
+    console.log(userId);
     return goodData;
   }
 }

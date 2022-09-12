@@ -1,4 +1,4 @@
-import FoodCart from "components/FoodCart/FoodCart";
+import InfoCard from "components/InfoCard/InfoCard";
 import UserInfo from "components/UserInfo/UserInfo";
 import FirstBarChart from "components/charts/SimpleBarChart/SimpleBarChart";
 import RedLineChart from "components/charts/LineChart/RedLineChart";
@@ -7,6 +7,7 @@ import ScoreChart from "components/charts/ScoreChart/ScoreChart";
 import AsideNav from "components/partial/AsideNav/AsideNav";
 import ApiProvider from "data/ApiProvider";
 import { useState } from "react";
+import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 
 const Home = () => {
   const [userSelect, setUserSelect] = useState();
@@ -39,11 +40,14 @@ const Home = () => {
               </div>
             </section>
           </div>
+
+          <AllCardsInfo />
+
           <ul className="foodList">
-            <FoodCart value={2} type="Calories" unit="kCal" />
-            <FoodCart value={1} type="Proteines" unit="g" />
-            <FoodCart value={2} type="Glucides" unit="g" />
-            <FoodCart value={0} type="Lipides" unit="g" />
+            <InfoCard value={2} type="Calories" unit="kCal" />
+            <InfoCard value={1} type="Proteines" unit="g" />
+            <InfoCard value={2} type="Glucides" unit="g" />
+            <InfoCard value={0} type="Lipides" unit="g" />
           </ul>
         </div>
       </section>

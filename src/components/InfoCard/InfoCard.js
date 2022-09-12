@@ -1,5 +1,5 @@
 import React from "react";
-import "./FoodCart.css";
+import "./InfoCard.css";
 import fire from "assets/fire.svg";
 import chicken from "assets/chicken.svg";
 import apple from "assets/apple.svg";
