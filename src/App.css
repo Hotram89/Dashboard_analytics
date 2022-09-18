@@ -27,7 +27,6 @@ body {
 
 .dataVisualisation {
     display: flex;
-    border: 1px solid blue;
     height: 80%;
     width: 100%;
     gap: 2rem;

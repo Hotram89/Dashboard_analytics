@@ -1,5 +1,6 @@
 import React from "react";
 import Dto from "data/Dto";
+import CustomTooltip from "../CustomTooltip/CustomTooltip";
 import "./SimpleBarChart.css";
 import {
   BarChart,
@@ -10,6 +11,7 @@ import {
   XAxis,
   CartesianGrid,
   ResponsiveContainer,
+  Rectangle,
 } from "recharts";
 
 const FirstBarChart = () => {
@@ -22,7 +24,7 @@ const FirstBarChart = () => {
         height={300}
         data={filteredProps}
         margin={{
-          top: 5,
+          top: 80,
           right: 30,
           left: 20,
           bottom: 35,
@@ -31,7 +33,7 @@ const FirstBarChart = () => {
         <CartesianGrid strokeDasharray="3" vertical={false} />
         <XAxis dataKey="name" padding={{ bottom: 10 }} />
         <YAxis hide="true" />
-        <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
         <Legend
           iconType="circle"
           iconSize="10"
@@ -39,12 +41,19 @@ const FirstBarChart = () => {
           align="right"
         />
 
-        <Bar dataKey="poids" name="Poids (kg)" fill="#282D30" barSize={10} />
+        <Bar
+          dataKey="poids"
+          name="Poids (kg)"
+          fill="#282D30"
+          barSize={10}
+          radius={[5, 5, 0, 0]}
+        />
         <Bar
           dataKey="calories"
           name="Calories brûlées (kCal)"
           fill="#E60000"
           barSize={10}
+          radius={[5, 5, 0, 0]}
         />
       </BarChart>
     </ResponsiveContainer>
