@@ -24,15 +24,25 @@ const FirstBarChart = () => {
         height={300}
         data={filteredProps}
         margin={{
-          top: 80,
+          top: 60,
           right: 30,
           left: 20,
           bottom: 35,
         }}
       >
         <CartesianGrid strokeDasharray="3" vertical={false} />
-        <XAxis dataKey="name" padding={{ bottom: 10 }} />
-        <YAxis hide="true" />
+        <XAxis
+          dataKey="name"
+          tickLine={false}
+          tickSize={20}
+          padding={{ bottom: 10 }}
+        />
+        <YAxis
+          orientation="right"
+          tickMargin={40}
+          tickLine={false}
+          axisLine={false}
+        />
         <Tooltip content={<CustomTooltip />} />
         <Legend
           iconType="circle"
