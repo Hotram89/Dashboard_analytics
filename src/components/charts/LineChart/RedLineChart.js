@@ -41,8 +41,14 @@ const RedLineChart = () => {
           domain={["dataMin - 5", "dataMax + 5"]}
         />
         <Tooltip />
-        <Legend />
-        <Line type="basis" dataKey="pv" stroke="#FFFFFF" activeDot={false} />
+        <Legend verticalAlign="top" align="left" content={"Hello"} />
+        <Line
+          type="basis"
+          dataKey="pv"
+          stroke="#FFFFFF"
+          dot={false}
+          strokeWidth={2}
+        />
       </LineChart>
     </ResponsiveContainer>
   );
