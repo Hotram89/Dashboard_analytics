@@ -9,5 +9,6 @@
     min-width: 300px;
     min-height: 263px;
     background-color: rgba(255, 0, 0, 1);
+    border-radius: 5px;
 
 }

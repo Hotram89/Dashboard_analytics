@@ -41,7 +41,7 @@ const Home = () => {
             </section>
           </div>
 
-          <AllCardsInfo />
+          <AllCardsInfo id={userId} />
 
           <ul className="foodList">
             <InfoCard value={2} type="Calories" unit="kCal" />

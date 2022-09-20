@@ -44,13 +44,7 @@ const ScoreChart = () => {
           endAngle={250}
         >
           <circle cx="50%" cy="50%" fill="white" r="80"></circle>
-          <RadialBar
-            minAngle={15}
-            cornerRadius={5}
-            label={{ position: "insideStart", fill: "#fff" }}
-            background
-            dataKey="uv"
-          />
+          <RadialBar minAngle={15} cornerRadius={5} background dataKey="uv" />
         </RadialBarChart>
       </ResponsiveContainer>
     </div>
