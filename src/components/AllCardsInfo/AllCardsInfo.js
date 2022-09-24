@@ -2,8 +2,12 @@ import InfoCard from "components/InfoCard/FoodCard";
 import ApiProvider from "data/ApiProvider";
 
 const AllCardsInfo = (userId) => {
-  let cardList = new ApiProvider().getCardData();
-  let result = cardList.filter((el) => el.id === userId.id);
+  let dataBrute = new ApiProvider().getCardData();
+  let result = dataBrute.filter((el) => {
+    if (el.id === userId.id) {
+      return true;
+    }
+  });
   result = result[0].type;
   const names = Object.entries(result);
 

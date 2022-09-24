@@ -1,14 +1,14 @@
 import React from "react";
 import "./UserInfo.css";
-import { USER_MAIN_DATA } from "data/dataMock";
 import Dto from "data/Dto";
+import ApiProvider from "data/ApiProvider";
 
 const profilDto = new Dto().profilDto();
+const dataBrute = new ApiProvider().getProfilData();
 
-const UserInfo = () => {
-  const urlId = 12;
-  let idFilter = USER_MAIN_DATA.filter((el) => {
-    if (urlId === el.id) {
+const UserInfo = (url) => {
+  let idFilter = dataBrute.filter((el) => {
+    if (url.id == el.id) {
       return true;
     }
   });

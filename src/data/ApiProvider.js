@@ -1,4 +1,4 @@
-import { USER_MAIN_DATA } from "./dataMock";
+import { USER_MAIN_DATA } from "./data.js";
 import { USER_ACTIVITY } from "./data.js";
 import { USER_AVERAGE_SESSIONS, USER_PERFORMANCE } from "./data.js";
 import Dto from "./Dto";
@@ -24,7 +24,8 @@ export default class ApiProvider {
     let userId = urlId == "" ? 12 : urlId;
 
     const goodData = new Dto().cardProps(this.userData);
-    console.log(userId);
     return goodData;
   }
+
+  getScoreData() {}
 }

@@ -12,7 +12,6 @@ const Home = () => {
 
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
-  console.log(userId);
 
   return (
     <main className="main">
