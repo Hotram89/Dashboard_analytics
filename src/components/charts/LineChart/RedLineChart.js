@@ -9,20 +9,34 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { datagraph2 } from "data/dataMock";
+import ApiProvider from "data/ApiProvider";
+import Dto from "data/Dto";
 
-const RedLineChart = () => {
+const dataBrute = new ApiProvider().getRedLineData();
+
+const RedLineChart = (url) => {
+  let idFilter = dataBrute.filter((el) => {
+    if (url.id == el.userId) {
+      return true;
+    }
+  });
+
+  const goodData = new Dto().redLineProps(idFilter);
+  const Title = () => {
+    return <div className="rechart-title">Durée moyenne des sessions</div>;
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
         width={500}
         height={300}
-        data={datagraph2}
+        data={goodData}
         margin={{
-          top: 5,
-          right: 10,
-          left: 0,
-          bottom: 5,
+          top: 20,
+          right: 20,
+          left: 20,
+          bottom: 20,
         }}
       >
         <XAxis
@@ -41,14 +55,15 @@ const RedLineChart = () => {
           domain={["dataMin - 5", "dataMax + 5"]}
         />
         <Tooltip />
-        <Legend verticalAlign="top" align="left" content={"Hello"} />
         <Line
           type="basis"
           dataKey="pv"
           stroke="#FFFFFF"
           dot={false}
           strokeWidth={2}
+          activeDot={{ stroke: "white", r: 8 }}
         />
+        <Legend verticalAlign="top" align="left" content={Title} />
       </LineChart>
     </ResponsiveContainer>
   );

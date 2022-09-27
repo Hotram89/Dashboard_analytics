@@ -22,18 +22,18 @@ const Home = () => {
           <div className="charts">
             <section className="bigOne">
               <h3 className="textChart">Activité quotidienne</h3>
-              <FirstBarChart />
+              <FirstBarChart id={userId} />
             </section>
             <section className="littles">
               <div className="littleLine">
-                <RedLineChart />
+                <RedLineChart id={userId} />
               </div>
 
               <div className="littleRadar">
-                <SimpleRadarChart />
+                <SimpleRadarChart id={userId} />
               </div>
               <div className="lillteRadial">
-                <ScoreChart />
+                <ScoreChart id={userId} />
               </div>
             </section>
           </div>

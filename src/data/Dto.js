@@ -1,6 +1,4 @@
 import ApiProvider from "./ApiProvider";
-import { USER_ACTIVITY } from "data/dataMock";
-import { USER_PERFORMANCE } from "data/dataMock";
 
 export default class Dto {
   constructor(data) {
@@ -13,10 +11,10 @@ export default class Dto {
     return name;
   }
 
-  scoreProps() {
-    let propsInit = USER_ACTIVITY[0].sessions;
+  scoreProps(data) {
+    let initProps = data[0].sessions;
     let newprops = [];
-    propsInit.map((el, index) => {
+    initProps.map((el, index) => {
       newprops.push({
         name: index + 1,
         calories: el.calories,
@@ -39,10 +37,45 @@ export default class Dto {
     return newprops;
   }
 
-  radarProps() {
-    let propsInit = USER_PERFORMANCE[0].data;
-    let newprops = [];
+  radarProps(data) {
+    //initialise le tableau
+    let goodData = [];
+    //tableau de traduction français
+    const subjects = [
+      "Cardio",
+      "Energie",
+      "Endurance",
+      "Force",
+      "Vitesse",
+      "Intensité",
+    ];
+    //verifie si la donnée existe
+    if (data === undefined || data.length < 1) {
+      console.log("pas encore de data");
+    } else {
+      let sportsTitle = data[0].kind;
+      let value = data[0].data;
+      let result = Object.values(sportsTitle).map((el, index) =>
+        goodData.push({
+          subject: subjects[index],
+          A: value[index].value,
+          fullMark: 200,
+        })
+      );
+      return goodData;
+    }
+  }
 
-    propsInit.map((el) => {});
+  redLineProps(data) {
+    let goodData = [];
+    let days = ["L", "M", "M", "J", "V", "S", "D"];
+    let sessions = data[0].sessions;
+    Object.values(sessions).map((el, index) =>
+      goodData.push({
+        name: days[index],
+        pv: el.sessionLength,
+      })
+    );
+    return goodData;
   }
 }

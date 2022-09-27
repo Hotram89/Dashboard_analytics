@@ -18,14 +18,25 @@ export default class ApiProvider {
   getProfilData() {
     return this.userData;
   }
+  getRadarData() {
+    return this.userPerformance;
+  }
 
   getCardData() {
-    let urlId = window.location.pathname.replace("/", "");
-    let userId = urlId == "" ? 12 : urlId;
-
     const goodData = new Dto().cardProps(this.userData);
     return goodData;
   }
 
-  getScoreData() {}
+  getScoreData() {
+    const goodData = new Dto().scoreProps(this.userActivity);
+    return this.userActivity;
+  }
+
+  getRedLineData() {
+    return this.userSessions;
+  }
+
+  getRadialData() {
+    return this.userData;
+  }
 }

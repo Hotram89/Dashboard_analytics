@@ -4,10 +4,11 @@ import ApiProvider from "data/ApiProvider";
 const AllCardsInfo = (userId) => {
   let dataBrute = new ApiProvider().getCardData();
   let result = dataBrute.filter((el) => {
-    if (el.id === userId.id) {
+    if (el.id == userId.id) {
       return true;
     }
   });
+
   result = result[0].type;
   const names = Object.entries(result);
 

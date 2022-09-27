@@ -6,56 +6,23 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   ResponsiveContainer,
-  Label,
 } from "recharts";
+import ApiProvider from "data/ApiProvider";
 
-const filteredProps = new Dto().radarProps();
+const dataBrute = new ApiProvider().getRadarData();
 
-const SimpleRadarChart = () => {
-  const data = [
-    {
-      subject: "Intensité",
-      A: 120,
-      B: 110,
-      fullMark: 150,
-    },
-    {
-      subject: "Vitesse",
-      A: 98,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: "Force",
-      A: 86,
-      B: 130,
-      fullMark: 150,
-    },
-    {
-      subject: "Endurance",
-      A: 99,
-      B: 100,
-      fullMark: 150,
-    },
-    {
-      subject: "Energie",
-      A: 85,
-      B: 90,
-      fullMark: 150,
-    },
-    {
-      subject: "Cardio",
-      A: 65,
-      B: 85,
-      fullMark: 150,
-    },
-  ];
+const SimpleRadarChart = (url) => {
+  let idFilter = dataBrute.filter((el) => {
+    if (url.id == el.userId) {
+      return true;
+    }
+  });
+  const filteredProps = new Dto().radarProps(idFilter);
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={filteredProps}>
         <PolarGrid radialLines={false} />
         <PolarAngleAxis
           dataKey="subject"

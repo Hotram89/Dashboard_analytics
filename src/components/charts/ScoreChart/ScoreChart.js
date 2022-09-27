@@ -6,13 +6,22 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import ApiProvider from "data/ApiProvider";
 
-const ScoreChart = () => {
+const ScoreChart = (url) => {
+  let dataBrute = new ApiProvider().getRadialData();
+  let idFilter = dataBrute.filter((el) => {
+    if (url.id == el.id) {
+      return true;
+    }
+  });
+
+  const score = idFilter[0].todayScore || idFilter[0].score;
+
   const data = [
     {
       name: "unknow",
-      uv: 6.67,
-      pv: 4800,
+      uv: 3.67,
       fill: "#FF0000",
     },
   ];
@@ -27,7 +36,7 @@ const ScoreChart = () => {
     <div className="score">
       <h3>Score</h3>
       <div className="score_result">
-        <h4>12%</h4>
+        <h4>{score * 100}%</h4>
         <p>de votre objectif</p>
       </div>
       <ResponsiveContainer width="100%" height={300}>
