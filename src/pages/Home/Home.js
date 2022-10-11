@@ -6,12 +6,17 @@ import ScoreChart from "components/charts/ScoreChart/ScoreChart";
 import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
+import ApiProvider from "data/ApiProvider"; // RENOMMER EN ApiProviderMock
 
 const Home = () => {
   const [userSelect, setUserSelect] = useState();
 
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
+
+  const SimpleBarChartDto = new ApiProvider().getActivity(userId);
+  const ScoreChartDto = new ApiProvider().getUserMainData(userId);
+  const RedLineDto = new ApiProvider().getSessionsData(userId);
 
   return (
     <main className="main">
@@ -22,18 +27,18 @@ const Home = () => {
           <div className="charts">
             <section className="bigOne">
               <h3 className="textChart">Activité quotidienne</h3>
-              <FirstBarChart id={userId} />
+              <FirstBarChart dto={SimpleBarChartDto} />
             </section>
             <section className="littles">
               <div className="littleLine">
-                <RedLineChart id={userId} />
+                <RedLineChart dto={RedLineDto} />
               </div>
 
               <div className="littleRadar">
                 <SimpleRadarChart id={userId} />
               </div>
               <div className="lillteRadial">
-                <ScoreChart id={userId} />
+                <ScoreChart dto={ScoreChartDto} />
               </div>
             </section>
           </div>

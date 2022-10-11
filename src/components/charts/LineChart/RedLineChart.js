@@ -9,19 +9,12 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import ApiProvider from "data/ApiProvider";
-import Dto from "data/Dto";
 
-const dataBrute = new ApiProvider().getRedLineData();
+import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
-const RedLineChart = (url) => {
-  let idFilter = dataBrute.filter((el) => {
-    if (url.id == el.userId) {
-      return true;
-    }
-  });
+const RedLineChart = (data) => {
+  const redLineDto = data.dto.session[0];
 
-  const goodData = new Dto().redLineProps(idFilter);
   const Title = () => {
     return <div className="rechart-title">Durée moyenne des sessions</div>;
   };
@@ -31,7 +24,7 @@ const RedLineChart = (url) => {
       <LineChart
         width={500}
         height={300}
-        data={goodData}
+        data={redLineDto}
         margin={{
           top: 20,
           right: 20,
@@ -55,6 +48,8 @@ const RedLineChart = (url) => {
           domain={["dataMin - 5", "dataMax + 5"]}
         />
         <Tooltip />
+        <Tooltip content={<CustomTooltip />} />
+
         <Line
           type="basis"
           dataKey="pv"

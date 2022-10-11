@@ -13,24 +13,15 @@ import {
   ResponsiveContainer,
   Rectangle,
 } from "recharts";
-import ApiProvider from "data/ApiProvider";
 
-const dataBrute = new ApiProvider().getScoreData();
-
-const FirstBarChart = (url) => {
-  let idFilter = dataBrute.filter((el) => {
-    if (url.id == el.userId) {
-      return true;
-    }
-  });
-  const filteredProps = new Dto().scoreProps(idFilter);
-
+const FirstBarChart = (data) => {
+  const firstBarChartDto = data.dto;
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
-        data={filteredProps}
+        data={firstBarChartDto.dataBars}
         margin={{
           top: 60,
           right: 30,
