@@ -10,4 +10,5 @@ class SimpleBarChartDto {
     });
   }
 }
+
 export default SimpleBarChartDto;

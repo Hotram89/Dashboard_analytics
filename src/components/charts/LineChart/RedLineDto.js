@@ -1,17 +1,29 @@
+/**
+ * {
+ * sessions: [
+ *	{
+ *		name: "L",   X axis name
+ *		pv: 1,       Y axis value
+ *	 },
+ *	...
+ *  ]
+ * }
+ */
 class RedLineDto {
   constructor(data) {
-    console.log(data);
+    /*data from the good user*/
+
+    let newData = data[0].sessions;
+
     this.session = [];
     let days = ["L", "M", "M", "J", "V", "S", "D"];
 
-    data.map((session, index) =>
+    newData.map((session, index) =>
       this.session.push({
         name: days[index],
-        pv: session.sessions,
+        pv: session.sessionLength,
       })
     );
-    console.log(data);
-    console.log(this.session);
   }
 }
 export default RedLineDto;

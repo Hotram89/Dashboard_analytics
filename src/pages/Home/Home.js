@@ -6,7 +6,8 @@ import ScoreChart from "components/charts/ScoreChart/ScoreChart";
 import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
-import ApiProvider from "data/ApiProvider"; // RENOMMER EN ApiProviderMock
+import ApiProviderMock from "data/ApiProviderMock"; // RENOMMER EN ApiProviderMock
+import ApiProvider from "data/ApriProvider";
 
 const Home = () => {
   const [userSelect, setUserSelect] = useState();
@@ -14,15 +15,20 @@ const Home = () => {
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
 
-  const SimpleBarChartDto = new ApiProvider().getActivity(userId);
-  const ScoreChartDto = new ApiProvider().getUserMainData(userId);
-  const RedLineDto = new ApiProvider().getSessionsData(userId);
+  const testProvider = new ApiProvider().getSportData();
+
+  const SimpleBarChartDto = new ApiProviderMock().getActivity(userId);
+  const ScoreChartDto = new ApiProviderMock().getUserMainData(userId);
+  const RedLineDto = new ApiProviderMock().getSessionsData(userId);
+  const RadarDto = new ApiProviderMock().getRadarData(userId);
+  const UserDto = new ApiProviderMock().getProfilData(userId);
+  const AllCardsDto = new ApiProviderMock().getCardData(userId);
 
   return (
     <main className="main">
       <AsideNav />
       <section className="dashboard">
-        <UserInfo id={userId} />
+        <UserInfo dto={UserDto} />
         <div className="dataVisualisation">
           <div className="charts">
             <section className="bigOne">
@@ -35,7 +41,7 @@ const Home = () => {
               </div>
 
               <div className="littleRadar">
-                <SimpleRadarChart id={userId} />
+                <SimpleRadarChart dto={RadarDto} />
               </div>
               <div className="lillteRadial">
                 <ScoreChart dto={ScoreChartDto} />
@@ -43,7 +49,7 @@ const Home = () => {
             </section>
           </div>
 
-          <AllCardsInfo id={userId} />
+          <AllCardsInfo dto={AllCardsDto} />
         </div>
       </section>
     </main>

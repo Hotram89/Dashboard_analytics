@@ -1,0 +1,44 @@
+Redux
+
+bibliotheque open source Javasript de gestion d'etat
+
+permet d'homogenéisé les données dans chaque composant en les stockant a un seul endroit
+et ça evite que chaque parent transfert l'information
+
+Si c'est un site CV par forcement besoin d'un store Redux
+
+Mais sinon en entreprise presque chaque projet a un plugin Redux
+Redux c'est + un concept, un addon pour faire un store .
+Redux c'est une librairie, "avoir un Redux" c'est avoir un store gestionnaire d'état.
+
+
+"Reducer" sorte de tunnel avec un regroupement de choses
+
+un fichier par Reducer
++ un fichier pour regrouper tous les reducer
+
+
+Typescript
+
+a la base il y avait JS, qui n'était pas conçu comme langage de développement
+
+
+JS script est un alphabet fait par EcmaScript
+Javascript est un langage qui utilie cet alphabet
+d'autres langage qui utilisent cet alphabet :
+
+EcmaScript c'est une norme d'écritures pour beaucoup de scripts, dont Javascript
+Si c'est ok sur EcmaScript, alors c'est normalement ok pour tous les navigateurs
+
+
+La difference entre ES6 et le Typescript,
+c'est que le navigateur ne lit pas le TS directement, il faut un compilateur
+
+
+IIFE Immediately Invoked Function Expressions
+
+Typescript permet de typer les données, faire des syntaxes, et et ça transforme le JS en réel langage de developpement
+il permet d'avoir des interfaces, des typages.
+Typescript est + intuitif car il ressemble aux syntaxes des autres langages de programmation
+les methodes qui utilisent les array, (forEach, map, ...) ont permis de typer le JS
+le prototypage 

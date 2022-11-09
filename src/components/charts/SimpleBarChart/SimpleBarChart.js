@@ -1,5 +1,5 @@
 import React from "react";
-import Dto from "data/Dto";
+import PropTypes from "prop-types";
 import CustomTooltip from "../CustomTooltip/CustomTooltip";
 import "./SimpleBarChart.css";
 import {
@@ -14,8 +14,8 @@ import {
   Rectangle,
 } from "recharts";
 
-const FirstBarChart = (data) => {
-  const firstBarChartDto = data.dto;
+function FirstBarChart({ dto }) {
+  const firstBarChartDto = dto;
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -67,6 +67,26 @@ const FirstBarChart = (data) => {
       </BarChart>
     </ResponsiveContainer>
   );
+}
+export default FirstBarChart;
+
+FirstBarChart.propTypes = {
+  dto: PropTypes.shape({
+    dataBars: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.number,
+        calories: PropTypes.number,
+        poids: PropTypes.number,
+      })
+    ),
+  }),
 };
 
-export default FirstBarChart;
+// this.dataBars = [];
+// data.map((el, index) => {
+//   this.dataBars.push({
+//     name: index + 1,
+//     calories: el.calories,
+//     poids: el.kilogram,
+//   });
+// });

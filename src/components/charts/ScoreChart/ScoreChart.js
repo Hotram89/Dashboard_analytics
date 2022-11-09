@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./ScoreChart.css";
 import {
   RadialBarChart,
@@ -8,12 +9,6 @@ import {
 } from "recharts";
 
 const ScoreChart = (data) => {
-  const style = {
-    top: "50%",
-    right: 0,
-    transform: "translate(0, -50%)",
-    lineHeight: "24px",
-  };
   let score = data.dto.radialData;
 
   return (
@@ -45,3 +40,23 @@ const ScoreChart = (data) => {
 };
 
 export default ScoreChart;
+
+ScoreChart.propTypes = {
+  dto: PropTypes.shape({
+    radialData: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.number,
+        uv: PropTypes.number,
+        fill: PropTypes.string,
+      })
+    ),
+  }),
+};
+
+//constructor(data) {
+//    this.radialData = [];
+//    this.radialData.push({
+//      name: data * 100,
+//      uv: data * 100,
+//      fill: "#FF0000",
+//    })

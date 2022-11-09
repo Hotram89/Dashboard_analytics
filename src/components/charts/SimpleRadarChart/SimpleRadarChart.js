@@ -1,6 +1,5 @@
 import React from "react";
 import "./SimpleRadarChart.css";
-import Dto from "data/Dto";
 import {
   Radar,
   RadarChart,
@@ -8,21 +7,13 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
-import ApiProvider from "data/ApiProvider";
 
-const dataBrute = new ApiProvider().getRadarData();
-
-const SimpleRadarChart = (url) => {
-  let idFilter = dataBrute.filter((el) => {
-    if (url.id == el.userId) {
-      return true;
-    }
-  });
-  const filteredProps = new Dto().radarProps(idFilter);
+const SimpleRadarChart = (dto) => {
+  const radarDto = dto.dto.radarData;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={filteredProps}>
+      <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarDto}>
         <PolarGrid radialLines={false} />
         <PolarAngleAxis
           dataKey="subject"

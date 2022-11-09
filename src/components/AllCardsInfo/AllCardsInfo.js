@@ -1,15 +1,7 @@
 import InfoCard from "components/InfoCard/FoodCard";
-import ApiProvider from "data/ApiProvider";
 
-const AllCardsInfo = (userId) => {
-  let dataBrute = new ApiProvider().getCardData();
-  let result = dataBrute.filter((el) => {
-    if (el.id == userId.id) {
-      return true;
-    }
-  });
-
-  result = result[0].type;
+const AllCardsInfo = (dto) => {
+  let result = dto.dto.profilData.keyData;
   const names = Object.entries(result);
 
   //ajoute la traduction française à chaque element du tableau
