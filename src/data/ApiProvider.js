@@ -18,14 +18,10 @@ export default class ApiProvider {
   }
 
   async getProfilData() {
-    const res = await axios
-      .get("http://localhost:3000/user/12")
-
-      .catch((err) =>
-        alert("Erreur 503 : The server is currently unavailable.")
-      );
-    console.log(res.data.data.userInfos);
-    let user = res.data.data.userInfos;
-    return new UserInfoDto(user);
+    return axios.get("http://localhost:3000/user/12").then((res) => {
+      let user = res?.data?.data?.userInfos;
+      console.log(user);
+      return new UserInfoDto(user);
+    });
   }
 }

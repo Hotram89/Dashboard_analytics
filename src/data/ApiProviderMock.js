@@ -20,14 +20,18 @@ export default class ApiProviderMock {
     let profils = this.userData.filter((session) => {
       return userId == session.id;
     });
-
-    return new UserInfoDto(profils);
+    return new Promise((resolve, reject) => {
+      resolve(new UserInfoDto(profils));
+    });
   }
+
   getRadarData(userId) {
     let sports = this.userPerformance.filter((sport) => {
       return userId == sport.userId;
     });
-    return new SimpleRadarDTO(sports);
+    return new Promise((resolve, reject) => {
+      resolve(new SimpleRadarDTO(sports));
+    });
   }
 
   getRadialData(userId) {
