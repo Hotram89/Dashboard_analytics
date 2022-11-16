@@ -7,7 +7,7 @@ import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import ApiProviderMock from "data/ApiProviderMock"; // RENOMMER EN ApiProviderMock
-import ApiProvider from "data/ApriProvider";
+import ApiProvider from "data/ApiProvider";
 
 const Home = () => {
   const [userSelect, setUserSelect] = useState();
@@ -15,20 +15,21 @@ const Home = () => {
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
 
-  const testProvider = new ApiProvider().getSportData();
-
   const SimpleBarChartDto = new ApiProviderMock().getActivity(userId);
   const ScoreChartDto = new ApiProviderMock().getUserMainData(userId);
   const RedLineDto = new ApiProviderMock().getSessionsData(userId);
   const RadarDto = new ApiProviderMock().getRadarData(userId);
   const UserDto = new ApiProviderMock().getProfilData(userId);
+  const UserDto2 = new ApiProvider().getProfilData();
+
+  console.log(UserDto2);
   const AllCardsDto = new ApiProviderMock().getCardData(userId);
 
   return (
     <main className="main">
       <AsideNav />
       <section className="dashboard">
-        <UserInfo dto={UserDto} />
+        <UserInfo dto={UserDto2} />
         <div className="dataVisualisation">
           <div className="charts">
             <section className="bigOne">
