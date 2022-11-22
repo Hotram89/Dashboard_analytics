@@ -1,14 +1,19 @@
 import axios from "axios";
+import RedLineDto from "components/charts/LineChart/RedLineDto";
+import ScoreChartDto from "components/charts/ScoreChart/ScoreChartDto";
+import SimpleBarChartDto from "components/charts/SimpleBarChart/SimpleBarChartDto";
+import SimpleRadarDTO from "components/charts/SimpleRadarChart/SimpleRadarDTO";
 import UserInfoDto from "components/UserInfo/UserInfoDto";
 
 export default class ApiProvider {
   constructor() {
     this.mickey = "res.data";
     this.result = "tango";
+    this.url = "http://localhost:3000/user/";
   }
   getSportData() {
     axios
-      .get("http://localhost:3000/user/12")
+      .get(this.url + "12")
       .then((res) => {
         console.log("ça passe");
       })
@@ -16,12 +21,49 @@ export default class ApiProvider {
         console.log("ça passe pas");
       });
   }
-
-  async getProfilData() {
-    return axios.get("http://localhost:3000/user/12").then((res) => {
+  /**
+   *
+   * @param {} userId
+   * @returns user name "Karl" for example
+   */
+  async getProfilData(userId) {
+    return axios.get(this.url + userId).then((res) => {
       let user = res?.data?.data?.userInfos;
-      console.log(user);
       return new UserInfoDto(user);
     });
   }
+  /**
+   *
+   * @param {*} userId
+   * @returns user activity as kilogram and calories
+   */
+  async getActivity(userId) {
+    return axios.get(this.url + userId + "/activity").then((res) => {
+      let session = res.data.data.sessions;
+      return new SimpleBarChartDto(session);
+    });
+  }
+
+  async getUserMainData(userId) {
+    return axios.get(this.url + userId).then((res) => {
+      let user = res;
+      return new ScoreChartDto(user);
+    });
+  }
+
+  async getSessionsData(userId) {
+    return axios.get(this.url + userId + "/average-sessions").then((res) => {
+      let session = res.data.data;
+      return new RedLineDto(session);
+    });
+  }
+
+  async getRadarData(userId) {
+    return axios.get(this.url + userId + "/performance").then((res) => {
+      let user = res.data.data;
+      return new SimpleRadarDTO(user);
+    });
+  }
+
+  getCardData(userId) {}
 }

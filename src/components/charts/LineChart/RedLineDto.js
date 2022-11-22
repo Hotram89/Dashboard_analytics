@@ -13,8 +13,7 @@ class RedLineDto {
   constructor(data) {
     /*data from the good user*/
 
-    let newData = data[0].sessions;
-
+    let newData = data.sessions;
     this.session = [];
     let days = ["L", "M", "M", "J", "V", "S", "D"];
 

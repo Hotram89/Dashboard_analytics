@@ -10,8 +10,8 @@ class SimpleRadarDTO {
       "Vitesse",
       "Intensité",
     ];
-    let sportsTitle = data[0].kind;
-    let value = data[0].data;
+    let sportsTitle = data.kind;
+    let value = data.data;
     Object.values(sportsTitle).map((el, index) =>
       this.radarData.push({
         subject: subjects[index],

@@ -7,30 +7,52 @@ import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useEffect, useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import ApiProviderFactory from "data/ApiProviderFactory";
+import UserInfoDto from "components/UserInfo/UserInfoDto";
 
 const Home = () => {
-  const [userSelect, setUserSelect] = useState();
-
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
 
-  const ApiProvider = new ApiProviderFactory().get(true);
+  const ApiProvider = new ApiProviderFactory().get(false);
   const [userName, setUserName] = useState();
+  const [dailyActivity, setDailyActivity] = useState();
+  const [scoreData, setScoreData] = useState();
+  const [sessionData, setSession] = useState();
+  const [performance, setPerformance] = useState();
   //   Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
     ApiProvider.getProfilData(userId).then((res) => {
-      setUserName(res.userName[0].userInfos.firstName);
+      setUserName(res.userName.firstName);
     });
   }, []);
 
-  const SimpleBarChartDto = ApiProvider.getActivity(userId);
-  const ScoreChartDto = ApiProvider.getUserMainData(userId);
-  const RedLineDto = ApiProvider.getSessionsData(userId);
-  const RadarDto = ApiProvider.getRadarData(userId);
-  const UserDto = ApiProvider.getProfilData(userId);
-  let test = ApiProvider.getProfilData(userId).then((res) => {
-    return res;
-  });
+  useEffect(() => {
+    ApiProvider.getActivity(userId).then((res) => {
+      setDailyActivity(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    ApiProvider.getUserMainData(userId).then((res) => {
+      setScoreData(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    ApiProvider.getSessionsData(userId).then((res) => {
+      setSession(res);
+    });
+  }, []);
+
+  useEffect(() => {
+    ApiProvider.getRadarData(userId).then((res) => {
+      setPerformance(res);
+    });
+  }, []);
+  // const UserDto = ApiProvider.getProfilData(userId);
+  //   let test = ApiProvider.getProfilData(userId).then((res) => {
+  //     return res;
+  //   });
   const AllCardsDto = ApiProvider.getCardData(userId);
 
   return (
@@ -42,23 +64,19 @@ const Home = () => {
           <div className="charts">
             <section className="bigOne">
               <h3 className="textChart">Activité quotidienne</h3>
-              <FirstBarChart dto={SimpleBarChartDto} />
+              <FirstBarChart dto={{ dailyActivity }} />
             </section>
             <section className="littles">
               <div className="littleLine">
-                <RedLineChart dto={RedLineDto} />
+                <RedLineChart dto={{ sessionData }} />
               </div>
 
               <div className="littleRadar">
-                <SimpleRadarChart dto={RadarDto} />
+                <SimpleRadarChart dto={{ performance }} />
               </div>
-              <div className="lillteRadial">
-                <ScoreChart dto={ScoreChartDto} />
-              </div>
+              <div className="lillteRadial"></div>
             </section>
           </div>
-
-          <AllCardsInfo dto={AllCardsDto} />
         </div>
       </section>
     </main>
@@ -66,3 +84,9 @@ const Home = () => {
 };
 
 export default Home;
+
+/***
+ *                <ScoreChart dto={{ scoreData }} />
+
+ * <AllCardsInfo dto={AllCardsDto} />
+ */

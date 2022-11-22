@@ -17,6 +17,7 @@ export default class ApiProviderMock {
   }
 
   getProfilData(userId) {
+    console.log("c'est l'ApiMOck ici");
     let profils = this.userData.filter((session) => {
       return userId == session.id;
     });

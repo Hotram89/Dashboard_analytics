@@ -15,7 +15,8 @@ import {
 } from "recharts";
 
 function FirstBarChart({ dto }) {
-  const firstBarChartDto = dto;
+  const firstBarChartDto = dto.dailyActivity;
+  console.log(firstBarChartDto);
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
