@@ -1,6 +1,5 @@
 class SimpleBarChartDto {
   constructor(data) {
-    console.log(data);
     this.dataBars = [];
     data.map((el, index) => {
       this.dataBars.push({
@@ -9,7 +8,6 @@ class SimpleBarChartDto {
         poids: el.kilogram,
       });
     });
-    console.log(this.dataBars);
   }
 }
 

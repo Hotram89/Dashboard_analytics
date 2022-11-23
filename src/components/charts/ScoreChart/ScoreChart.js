@@ -9,13 +9,13 @@ import {
 } from "recharts";
 
 const ScoreChart = (data) => {
-  let score = data.dto.radialData;
+  let score = data.dto.scoreData;
 
   return (
     <div className="score">
       <h3>Score</h3>
       <div className="score_result">
-        <h4>{score[0].uv}%</h4>
+        <h4>{2}%</h4>
         <p>de votre objectif</p>
       </div>
       <ResponsiveContainer width="100%" height={300}>

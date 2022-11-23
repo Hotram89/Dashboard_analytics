@@ -1,4 +1,5 @@
 import axios from "axios";
+import CardsDto from "components/AllCardsInfo/CardsDto";
 import RedLineDto from "components/charts/LineChart/RedLineDto";
 import ScoreChartDto from "components/charts/ScoreChart/ScoreChartDto";
 import SimpleBarChartDto from "components/charts/SimpleBarChart/SimpleBarChartDto";
@@ -39,14 +40,14 @@ export default class ApiProvider {
    */
   async getActivity(userId) {
     return axios.get(this.url + userId + "/activity").then((res) => {
-      let session = res.data.data.sessions;
+      let session = res?.data?.data?.sessions;
       return new SimpleBarChartDto(session);
     });
   }
 
   async getUserMainData(userId) {
     return axios.get(this.url + userId).then((res) => {
-      let user = res;
+      let user = res?.data?.data?.todayScore;
       return new ScoreChartDto(user);
     });
   }
@@ -65,5 +66,10 @@ export default class ApiProvider {
     });
   }
 
-  getCardData(userId) {}
+  async getCardData(userId) {
+    return axios.get(this.url + userId).then((res) => {
+      let user = res?.data;
+      return new CardsDto(user);
+    });
+  }
 }

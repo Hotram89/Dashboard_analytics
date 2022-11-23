@@ -7,7 +7,6 @@ import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useEffect, useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import ApiProviderFactory from "data/ApiProviderFactory";
-import UserInfoDto from "components/UserInfo/UserInfoDto";
 
 const Home = () => {
   let urlId = window.location.pathname.replace("/", "");
@@ -19,6 +18,7 @@ const Home = () => {
   const [scoreData, setScoreData] = useState();
   const [sessionData, setSession] = useState();
   const [performance, setPerformance] = useState();
+  const [cards, setCards] = useState();
   //   Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
     ApiProvider.getProfilData(userId).then((res) => {
@@ -49,6 +49,12 @@ const Home = () => {
       setPerformance(res);
     });
   }, []);
+
+  useEffect(() => {
+    ApiProvider.getCardData(userId).then((res) => {
+      setCards(res);
+    });
+  }, []);
   // const UserDto = ApiProvider.getProfilData(userId);
   //   let test = ApiProvider.getProfilData(userId).then((res) => {
   //     return res;
@@ -74,7 +80,9 @@ const Home = () => {
               <div className="littleRadar">
                 <SimpleRadarChart dto={{ performance }} />
               </div>
-              <div className="lillteRadial"></div>
+              <div className="lillteRadial">
+                <ScoreChart dto={{ scoreData }} />
+              </div>
             </section>
           </div>
         </div>

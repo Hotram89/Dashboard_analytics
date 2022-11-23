@@ -2,7 +2,7 @@ import InfoCard from "components/InfoCard/FoodCard";
 
 const AllCardsInfo = (dto) => {
   let result = dto.dto.profilData.keyData;
-  const names = Object.entries(result);
+  let names = Object.entries(result);
 
   //ajoute la traduction française à chaque element du tableau
   const traduction = ["Calories", "Protéines", "Glucides", "Lipides"];
