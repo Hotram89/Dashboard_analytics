@@ -1,4 +1,5 @@
 import axios from "axios";
+import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import CardsDto from "components/AllCardsInfo/CardsDto";
 import RedLineDto from "components/charts/LineChart/RedLineDto";
 import ScoreChartDto from "components/charts/ScoreChart/ScoreChartDto";
@@ -8,11 +9,9 @@ import UserInfoDto from "components/UserInfo/UserInfoDto";
 
 export default class ApiProvider {
   constructor() {
-    this.mickey = "res.data";
-    this.result = "tango";
     this.url = "http://localhost:3000/user/";
   }
-  getSportData() {
+  getAllData() {
     axios
       .get(this.url + "12")
       .then((res) => {
@@ -47,7 +46,10 @@ export default class ApiProvider {
 
   async getUserMainData(userId) {
     return axios.get(this.url + userId).then((res) => {
-      let user = res?.data?.data?.todayScore;
+      let user =
+        res?.data?.data?.todayScore == undefined
+          ? res.data.data.score
+          : res.data.data.todayScore;
       return new ScoreChartDto(user);
     });
   }

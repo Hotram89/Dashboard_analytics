@@ -9,7 +9,7 @@ import {
 } from "recharts";
 
 const SimpleRadarChart = (dto) => {
-  const radarDto = dto.dto.radarData;
+  const radarDto = dto.dto.performance.radarData;
 
   return (
     <ResponsiveContainer width="100%" height="100%">

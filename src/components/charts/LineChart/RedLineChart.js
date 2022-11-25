@@ -13,7 +13,7 @@ import {
 import CustomTooltip from "../CustomTooltip/CustomTooltip";
 
 const RedLineChart = (data) => {
-  const redLineDto = data.dto.session;
+  const redLineDto = data.dto.sessionData.session;
 
   const Title = () => {
     return <div className="rechart-title">Durée moyenne des sessions</div>;

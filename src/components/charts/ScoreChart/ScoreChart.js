@@ -15,7 +15,7 @@ const ScoreChart = (data) => {
     <div className="score">
       <h3>Score</h3>
       <div className="score_result">
-        <h4>{2}%</h4>
+        <h4>{score.radialData[0].uv}%</h4>
         <p>de votre objectif</p>
       </div>
       <ResponsiveContainer width="100%" height={300}>
@@ -27,7 +27,7 @@ const ScoreChart = (data) => {
           cy="50%"
           outerRadius="80%"
           barSize={10}
-          data={score}
+          data={score.radialData}
           startAngle={90}
           endAngle={250}
         >

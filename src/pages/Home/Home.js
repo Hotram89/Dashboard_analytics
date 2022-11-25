@@ -7,18 +7,20 @@ import AsideNav from "components/partial/AsideNav/AsideNav";
 import { useEffect, useState } from "react";
 import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import ApiProviderFactory from "data/ApiProviderFactory";
+import Loading from "components/Loader/Loading";
 
 const Home = () => {
   let urlId = window.location.pathname.replace("/", "");
   let userId = urlId == "" ? 12 : urlId;
 
   const ApiProvider = new ApiProviderFactory().get(false);
-  const [userName, setUserName] = useState();
-  const [dailyActivity, setDailyActivity] = useState();
-  const [scoreData, setScoreData] = useState();
-  const [sessionData, setSession] = useState();
-  const [performance, setPerformance] = useState();
-  const [cards, setCards] = useState();
+  const [userName, setUserName] = useState(null);
+  const [dailyActivity, setDailyActivity] = useState(null);
+  const [scoreData, setScoreData] = useState(null);
+  const [sessionData, setSession] = useState(null);
+  const [performance, setPerformance] = useState(null);
+  const [cards, setCards] = useState(null);
+
   //   Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
     ApiProvider.getProfilData(userId).then((res) => {
@@ -55,36 +57,44 @@ const Home = () => {
       setCards(res);
     });
   }, []);
-  // const UserDto = ApiProvider.getProfilData(userId);
-  //   let test = ApiProvider.getProfilData(userId).then((res) => {
-  //     return res;
-  //   });
-  const AllCardsDto = ApiProvider.getCardData(userId);
 
   return (
     <main className="main">
       <AsideNav />
       <section className="dashboard">
-        <UserInfo dto={{ userName }} />
+        {userName ? <UserInfo dto={{ userName }} /> : <Loading />}
         <div className="dataVisualisation">
           <div className="charts">
             <section className="bigOne">
               <h3 className="textChart">Activité quotidienne</h3>
-              <FirstBarChart dto={{ dailyActivity }} />
+              {dailyActivity ? (
+                <FirstBarChart dto={{ dailyActivity }} />
+              ) : (
+                <Loading />
+              )}
             </section>
             <section className="littles">
               <div className="littleLine">
-                <RedLineChart dto={{ sessionData }} />
+                {sessionData ? (
+                  <RedLineChart dto={{ sessionData }} />
+                ) : (
+                  <Loading />
+                )}
               </div>
 
               <div className="littleRadar">
-                <SimpleRadarChart dto={{ performance }} />
+                {performance ? (
+                  <SimpleRadarChart dto={{ performance }} />
+                ) : (
+                  <Loading />
+                )}
               </div>
               <div className="lillteRadial">
-                <ScoreChart dto={{ scoreData }} />
+                {scoreData ? <ScoreChart dto={{ scoreData }} /> : <Loading />}
               </div>
             </section>
           </div>
+          {cards ? <AllCardsInfo dto={{ cards }} /> : <Loading />}
         </div>
       </section>
     </main>
@@ -92,9 +102,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/***
- *                <ScoreChart dto={{ scoreData }} />
-
- * <AllCardsInfo dto={AllCardsDto} />
- */
