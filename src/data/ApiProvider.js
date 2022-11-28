@@ -1,5 +1,4 @@
 import axios from "axios";
-import AllCardsInfo from "components/AllCardsInfo/AllCardsInfo";
 import CardsDto from "components/AllCardsInfo/CardsDto";
 import RedLineDto from "components/charts/LineChart/RedLineDto";
 import ScoreChartDto from "components/charts/ScoreChart/ScoreChartDto";
