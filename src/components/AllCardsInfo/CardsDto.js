@@ -1,7 +1,7 @@
 class CardsDto {
   constructor(data) {
     this.profilData = [];
-    this.profilData = data.data;
+    this.profilData = data;
   }
 }
 

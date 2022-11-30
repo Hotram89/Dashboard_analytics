@@ -17,12 +17,11 @@ export default class ApiProviderMock {
   }
 
   getProfilData(userId) {
-    console.log("c'est l'ApiMOck ici");
     let profils = this.userData.filter((session) => {
       return userId == session.id;
     });
     return new Promise((resolve, reject) => {
-      resolve(new UserInfoDto(profils));
+      resolve(new UserInfoDto(profils[0].userInfos));
     });
   }
 
@@ -31,20 +30,25 @@ export default class ApiProviderMock {
       return userId == sport.userId;
     });
     return new Promise((resolve, reject) => {
-      resolve(new SimpleRadarDTO(sports));
+      resolve(new SimpleRadarDTO(sports[0]));
     });
   }
 
   getRadialData(userId) {
-    this.userData.filter((score) => {
+    let score = this.userData.filter((score) => {
       return userId == score.id;
+    });
+    return new Promise((resolve, reject) => {
+      resolve(new ScoreChartDto(score));
     });
   }
   getCardData(userId) {
     let cards = this.userData.filter((card) => {
       return userId == card.id;
     });
-    return new CardsDto(cards);
+    return new Promise((resolve, reject) => {
+      resolve(new CardsDto(cards[0]));
+    });
   }
 
   getSessionsData(userId) {
@@ -56,7 +60,10 @@ export default class ApiProviderMock {
     let sessions = this.userAverageSessions.filter((session) => {
       return userId == session.userId;
     });
-    return new RedLineDto(sessions);
+    //return new RedLineDto(sessions);
+    return new Promise((resolve, reject) => {
+      resolve(new RedLineDto(sessions[0]));
+    });
   }
   getUserMainData(userId) {
     let scores = this.userData.filter((score) => {
@@ -69,7 +76,10 @@ export default class ApiProviderMock {
       scores[0]?.todayScore == undefined
         ? scores[0]?.score
         : scores[0]?.todayScore;
-    return new ScoreChartDto(element);
+    //return new ScoreChartDto(element);
+    return new Promise((resolve, reject) => {
+      resolve(new ScoreChartDto(element));
+    });
   }
 
   getActivity(userId) {
@@ -78,6 +88,9 @@ export default class ApiProviderMock {
         return true;
       }
     });
-    return new SimpleBarChartDto(activities[0].sessions);
+    // return new SimpleBarChartDto(activities[0].sessions);
+    return new Promise((resolve, reject) => {
+      resolve(new SimpleBarChartDto(activities));
+    });
   }
 }

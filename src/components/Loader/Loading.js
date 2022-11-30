@@ -1,7 +1,11 @@
 import "./Loading.css";
 
 const Loading = () => {
-  return <div className="spinner"> Loading...</div>;
+  return (
+    <div className="container">
+      <div className="spinner"></div> Loading
+    </div>
+  );
 };
 
 export default Loading;

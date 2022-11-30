@@ -1,0 +1,29 @@
+.mock {
+    
+}
+
+.button {
+    height: 2rem;
+    width: 5rem;
+    background-color: aliceblue;
+    border-radius: 25px ;
+    display: flex ;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+.button .handle{
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(177, 46, 61);
+    border-radius: 35px;
+    border: solid 0.5px aliceblue;
+    cursor: pointer;
+    display: flex;
+  
+}
+
+ .clic {
+    justify-content: flex-end;
+}

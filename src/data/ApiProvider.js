@@ -70,7 +70,7 @@ export default class ApiProvider {
   async getCardData(userId) {
     return axios.get(this.url + userId).then((res) => {
       let user = res?.data;
-      return new CardsDto(user);
+      return new CardsDto(user.data);
     });
   }
 }
