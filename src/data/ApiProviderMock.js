@@ -90,7 +90,7 @@ export default class ApiProviderMock {
     });
     // return new SimpleBarChartDto(activities[0].sessions);
     return new Promise((resolve, reject) => {
-      resolve(new SimpleBarChartDto(activities));
+      resolve(new SimpleBarChartDto(activities[0]));
     });
   }
 }
