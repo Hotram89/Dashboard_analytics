@@ -20,9 +20,11 @@ export default class ApiProvider {
         console.log("ça passe pas");
       });
   }
+
   /**
+   *Use to know user's firstname
    *
-   * @param {} userId
+   * @param {number} userId
    * @returns user name "Karl" for example
    */
   async getProfilData(userId) {
@@ -31,6 +33,7 @@ export default class ApiProvider {
       return new UserInfoDto(user);
     });
   }
+
   /**
    *
    * @param {*} userId
@@ -43,6 +46,11 @@ export default class ApiProvider {
     });
   }
 
+  /**
+   *
+   * @param {number} userId
+   * @returns score for radial chart
+   */
   async getUserMainData(userId) {
     return axios.get(this.url + userId).then((res) => {
       let user =

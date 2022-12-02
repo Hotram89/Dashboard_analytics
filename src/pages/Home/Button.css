@@ -1,7 +1,3 @@
-.mock {
-    
-}
-
 .button {
     height: 2rem;
     width: 5rem;
@@ -10,7 +6,6 @@
     display: flex ;
     align-items: center;
     justify-content: flex-start;
-    
 }
 
 .button .handle{
@@ -21,7 +16,6 @@
     border: solid 0.5px aliceblue;
     cursor: pointer;
     display: flex;
-  
 }
 
  .clic {

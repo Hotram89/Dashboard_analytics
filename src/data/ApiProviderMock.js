@@ -60,7 +60,6 @@ export default class ApiProviderMock {
     let sessions = this.userAverageSessions.filter((session) => {
       return userId == session.userId;
     });
-    //return new RedLineDto(sessions);
     return new Promise((resolve, reject) => {
       resolve(new RedLineDto(sessions[0]));
     });
@@ -88,9 +87,8 @@ export default class ApiProviderMock {
         return true;
       }
     });
-    // return new SimpleBarChartDto(activities[0].sessions);
     return new Promise((resolve, reject) => {
-      resolve(new SimpleBarChartDto(activities[0]));
+      resolve(new SimpleBarChartDto(activities[0].sessions));
     });
   }
 }

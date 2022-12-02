@@ -26,15 +26,19 @@ const Home = () => {
 
   //   Le useEffect se joue lorsque le composant est monté
   useEffect(() => {
-    ApiProvider.getProfilData(userId).then((res) => {
-      setUserName(res.userName.firstName);
-    });
+    setTimeout(() => {
+      ApiProvider.getProfilData(userId).then((res) => {
+        setUserName(res.userName.firstName);
+      });
+    }, 1000);
   }, [click]);
 
   useEffect(() => {
-    ApiProvider.getActivity(userId).then((res) => {
-      setDailyActivity(res);
-    });
+    setTimeout(() => {
+      ApiProvider.getActivity(userId).then((res) => {
+        setDailyActivity(res);
+      });
+    }, 3000);
   }, [click]);
 
   useEffect(() => {
@@ -60,6 +64,7 @@ const Home = () => {
       setCards(res);
     });
   }, [click]);
+
   function handleClick() {
     click ? setClick(false) : setClick(true);
   }
