@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./RedLineChart.css";
 import {
   LineChart,
@@ -65,3 +66,14 @@ const RedLineChart = (data) => {
 };
 
 export default RedLineChart;
+
+RedLineChart.propTypes = {
+  dto: PropTypes.shape({
+    session: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.number,
+        pv: PropTypes.number,
+      })
+    ),
+  }),
+};

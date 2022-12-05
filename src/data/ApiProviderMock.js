@@ -16,6 +16,12 @@ export default class ApiProviderMock {
     this.userAverageSessions = USER_AVERAGE_SESSIONS;
   }
 
+  /**
+   *Use to know user's firstname
+   *
+   * @param {number} userId
+   * @returns user name "Karl" for example
+   */
   getProfilData(userId) {
     let profils = this.userData.filter((session) => {
       return userId == session.id;
@@ -25,45 +31,27 @@ export default class ApiProviderMock {
     });
   }
 
-  getRadarData(userId) {
-    let sports = this.userPerformance.filter((sport) => {
-      return userId == sport.userId;
+  /**
+   *
+   * @param {number} userId
+   * @returns user activity as kilogram and calories
+   */
+  getActivity(userId) {
+    let activities = this.userActivity.filter((activity) => {
+      if (userId == activity.userId) {
+        return true;
+      }
     });
     return new Promise((resolve, reject) => {
-      resolve(new SimpleRadarDTO(sports[0]));
+      resolve(new SimpleBarChartDto(activities[0].sessions));
     });
   }
 
-  getRadialData(userId) {
-    let score = this.userData.filter((score) => {
-      return userId == score.id;
-    });
-    return new Promise((resolve, reject) => {
-      resolve(new ScoreChartDto(score));
-    });
-  }
-  getCardData(userId) {
-    let cards = this.userData.filter((card) => {
-      return userId == card.id;
-    });
-    return new Promise((resolve, reject) => {
-      resolve(new CardsDto(cards[0]));
-    });
-  }
-
-  getSessionsData(userId) {
-    /***
-     * *
-     * filter by ID the data to export only the user needed*
-     * **
-     * */
-    let sessions = this.userAverageSessions.filter((session) => {
-      return userId == session.userId;
-    });
-    return new Promise((resolve, reject) => {
-      resolve(new RedLineDto(sessions[0]));
-    });
-  }
+  /**
+   *
+   * @param {number} userId
+   * @returns score for radial chart
+   */
   getUserMainData(userId) {
     let scores = this.userData.filter((score) => {
       if (userId == score.id) {
@@ -81,14 +69,50 @@ export default class ApiProviderMock {
     });
   }
 
-  getActivity(userId) {
-    let activities = this.userActivity.filter((activity) => {
-      if (userId == activity.userId) {
-        return true;
-      }
+  /**
+   *
+   * @param {number} userId
+   * @returns session length per day for a week
+   */
+  getSessionsData(userId) {
+    /***
+     * *
+     * filter by ID the data to export only the user needed*
+     * **
+     * */
+    let sessions = this.userAverageSessions.filter((session) => {
+      return userId == session.userId;
     });
     return new Promise((resolve, reject) => {
-      resolve(new SimpleBarChartDto(activities[0].sessions));
+      resolve(new RedLineDto(sessions[0]));
+    });
+  }
+
+  /**
+   *
+   * @param {number} userId
+   * @returns score for each kind of performance
+   */
+  getRadarData(userId) {
+    let sports = this.userPerformance.filter((sport) => {
+      return userId == sport.userId;
+    });
+    return new Promise((resolve, reject) => {
+      resolve(new SimpleRadarDTO(sports[0]));
+    });
+  }
+
+  /**
+   *
+   * @param {number} userId
+   * @returns data elements for each card
+   */
+  getCardData(userId) {
+    let cards = this.userData.filter((card) => {
+      return userId == card.id;
+    });
+    return new Promise((resolve, reject) => {
+      resolve(new CardsDto(cards[0]));
     });
   }
 }

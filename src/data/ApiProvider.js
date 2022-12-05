@@ -10,16 +10,6 @@ export default class ApiProvider {
   constructor() {
     this.url = "http://localhost:3000/user/";
   }
-  getAllData() {
-    axios
-      .get(this.url + "12")
-      .then((res) => {
-        console.log("ça passe");
-      })
-      .catch((err) => {
-        console.log("ça passe pas");
-      });
-  }
 
   /**
    *Use to know user's firstname
@@ -36,7 +26,7 @@ export default class ApiProvider {
 
   /**
    *
-   * @param {*} userId
+   * @param {number} userId
    * @returns user activity as kilogram and calories
    */
   async getActivity(userId) {
@@ -61,6 +51,11 @@ export default class ApiProvider {
     });
   }
 
+  /**
+   *
+   * @param {number} userId
+   * @returns session length per day for a week
+   */
   async getSessionsData(userId) {
     return axios.get(this.url + userId + "/average-sessions").then((res) => {
       let session = res.data.data;
@@ -68,6 +63,11 @@ export default class ApiProvider {
     });
   }
 
+  /**
+   *
+   * @param {number} userId
+   * @returns score for each kind of performance
+   */
   async getRadarData(userId) {
     return axios.get(this.url + userId + "/performance").then((res) => {
       let user = res.data.data;
@@ -75,6 +75,11 @@ export default class ApiProvider {
     });
   }
 
+  /**
+   *
+   * @param {number} userId
+   * @returns data elements for each card
+   */
   async getCardData(userId) {
     return axios.get(this.url + userId).then((res) => {
       let user = res?.data;
