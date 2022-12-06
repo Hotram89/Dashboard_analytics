@@ -6,6 +6,7 @@ import {
   RadialBar,
   Legend,
   ResponsiveContainer,
+  PolarAngleAxis,
 } from "recharts";
 
 const ScoreChart = (data) => {
@@ -29,9 +30,11 @@ const ScoreChart = (data) => {
           barSize={10}
           data={score.radialData}
           startAngle={90}
-          endAngle={250}
+          endAngle={450}
         >
           <circle cx="50%" cy="50%" fill="white" r="80"></circle>
+          <PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
+
           <RadialBar minAngle={15} cornerRadius={5} background dataKey="uv" />
         </RadialBarChart>
       </ResponsiveContainer>
@@ -52,11 +55,3 @@ ScoreChart.propTypes = {
     ),
   }),
 };
-
-//constructor(data) {
-//    this.radialData = [];
-//    this.radialData.push({
-//      name: data * 100,
-//      uv: data * 100,
-//      fill: "#FF0000",
-//    })

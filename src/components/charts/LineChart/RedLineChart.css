@@ -10,9 +10,14 @@
     min-height: 263px;
     background-color: rgba(255, 0, 0, 1);
     border-radius: 5px;
-
 }
 
 .rechart-title {
     color: white;
+}
+
+.custonToottipRed {
+    background-color: white;
+    padding: 1rem;
+    font-weight: 500;
 }

@@ -74,19 +74,10 @@ FirstBarChart.propTypes = {
   dto: PropTypes.shape({
     dataBars: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.number,
+        name: PropTypes.number.isRequired,
         calories: PropTypes.number,
         poids: PropTypes.number,
       })
     ),
   }),
 };
-
-// this.dataBars = [];
-// data.map((el, index) => {
-//   this.dataBars.push({
-//     name: index + 1,
-//     calories: el.calories,
-//     poids: el.kilogram,
-//   });
-// });

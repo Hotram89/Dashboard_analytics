@@ -9,9 +9,30 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Rectangle,
 } from "recharts";
 
-import CustomTooltip from "../CustomTooltip/CustomTooltip";
+const CustomTooltip = ({ active, payload }) => {
+  if (active) {
+    return (
+      <div className="custonToottipRed">
+        <p>{`${payload[0].value}`} min</p>
+      </div>
+    );
+  }
+};
+
+const CustomRectangle = ({ points }) => {
+  return (
+    <Rectangle
+      fill="#000000"
+      opacity={0.2}
+      x={points[1].x}
+      width={1000}
+      height={300}
+    />
+  );
+};
 
 const RedLineChart = (data) => {
   const redLineDto = data.dto.sessionData.session;
@@ -48,8 +69,7 @@ const RedLineChart = (data) => {
           tick={false}
           domain={["dataMin - 5", "dataMax + 5"]}
         />
-        <Tooltip />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip content={<CustomTooltip />} cursor={<CustomRectangle />} />
 
         <Line
           type="basis"

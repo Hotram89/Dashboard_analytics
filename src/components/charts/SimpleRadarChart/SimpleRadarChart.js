@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./SimpleRadarChart.css";
 import {
   Radar,
@@ -30,3 +31,15 @@ const SimpleRadarChart = (dto) => {
 };
 
 export default SimpleRadarChart;
+
+SimpleRadarChart.propTypes = {
+  dto: PropTypes.shape({
+    radarData: PropTypes.arrayOf(
+      PropTypes.shape({
+        subject: PropTypes.number,
+        A: PropTypes.number,
+        fullMark: PropTypes.number,
+      })
+    ),
+  }),
+};

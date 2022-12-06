@@ -21,3 +21,8 @@
  .clic {
     justify-content: flex-end;
 }
+
+.mock {
+    color: brown;
+    text-align: center;
+}

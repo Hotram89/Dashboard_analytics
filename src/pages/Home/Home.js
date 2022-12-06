@@ -22,9 +22,11 @@ const Home = () => {
   const [sessionData, setSession] = useState(null);
   const [performance, setPerformance] = useState(null);
   const [cards, setCards] = useState(null);
+
+  // ApiProvider is a class that allow you to switch between mock and non-mocked datas
   const ApiProvider = new ApiProviderFactory().get(click);
 
-  //   Le useEffect se joue lorsque le composant est monté
+  // useEffect plays a different useState each time you use a componant
   useEffect(() => {
     setTimeout(() => {
       ApiProvider.getProfilData(userId).then((res) => {
@@ -50,7 +52,7 @@ const Home = () => {
   useEffect(() => {
     ApiProvider.getSessionsData(userId).then((res) => {
       setSession(res);
-    });
+    }, 3000);
   }, [click]);
 
   useEffect(() => {
@@ -65,6 +67,10 @@ const Home = () => {
     });
   }, [click]);
 
+  /**
+   *
+   * toggle a class "clic" on a element
+   */
   function handleClick() {
     click ? setClick(false) : setClick(true);
   }
@@ -82,7 +88,8 @@ const Home = () => {
             <span className="handle"></span>
           </li>
         )}
-        <li className="mock">ON / OFF</li>
+        <li>ON / OFF</li>
+        <li className="mock">Mocked data</li>
       </div>
       <section className="dashboard">
         {userName ? <UserInfo dto={{ userName }} /> : <Loading />}
