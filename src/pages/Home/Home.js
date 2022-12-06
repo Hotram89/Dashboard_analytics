@@ -78,7 +78,7 @@ const Home = () => {
   return (
     <main className="main">
       <AsideNav />
-      <div>
+      <div className="btnContainer">
         {click ? (
           <li className="button clic" onClick={() => handleClick()}>
             <span className="handle"></span>

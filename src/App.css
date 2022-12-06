@@ -18,10 +18,12 @@ body {
 .main {
     display: flex;
     height: 100%;
+    z-index: 0;
+    position: relative;
 }
 
 .dashboard {
-    padding: 40px 68px;
+    padding: 2%;
 }
 
 .dataVisualisation {
@@ -29,7 +31,19 @@ body {
     height: 80%;
     width: 100%;
     gap: 2rem;
+    flex-wrap: nowrap;
 }
 
+@media only screen and (max-width: 1022px) {
+    .dataVisualisation {
+      flex-wrap: wrap;
+    }
+
+    .littles {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+  }
 
 

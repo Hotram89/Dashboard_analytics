@@ -23,6 +23,13 @@
 }
 
 .mock {
-    color: brown;
+    color: white;
     text-align: center;
+}
+
+.btnContainer {
+    z-index: 10;
+    height: 10rem;
+    position: absolute;
+    color: white;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import fire from "assets/fire.svg";
 import chicken from "assets/chicken.svg";
 import apple from "assets/apple.svg";
@@ -65,3 +66,23 @@ const InfoCard = ({ index, type, fr, unit }) => {
 };
 
 export default InfoCard;
+
+InfoCard.propTypes = {
+  dto: PropTypes.shape({
+    prodifData: PropTypes.shape({
+      id: PropTypes.number,
+      keyData: PropTypes.shape({
+        calorieCount: PropTypes.number,
+        proteineCount: PropTypes.number,
+        carbohydrateCount: PropTypes.number,
+        lipidCount: PropTypes.number,
+      }),
+      todayScore: PropTypes.number,
+      userInfos: PropTypes.shape({
+        firstName: PropTypes.string,
+        lastName: PropTypes.string,
+        age: PropTypes.number,
+      }),
+    }),
+  }),
+};
